@@ -1,0 +1,68 @@
+* {
+  font-family: 'Nunito', sans-serif;
+  box-sizing: border-box;
+}
+
+$color_warning: rgb(253, 145, 106), rgb(253, 98, 102), rgb(159, 107, 121);
+$color_error: rgb(245, 81, 95), rgb(208, 2, 105), rgb(143, 59, 117);
+$color_ok: rgb(6, 238, 203), rgb(48, 204, 113), rgb(63, 156, 147);
+
+$message-colors: (
+    warning: $color_warning,
+    error: $color_error,
+    ok:$color_ok
+);
+
+@mixin bg-gradient($first-bgcolor, $second-bgcolor, $btn-bgcolor) {
+  background-color: $first-bgcolor;
+  background-image: linear-gradient(left, $first-bgcolor 0%, $second-bgcolor);
+  .system-message__button {
+    box-shadow: 0px 2px 0px 0px $btn-bgcolor;
+    span {
+      background: linear-gradient($first-bgcolor, $second-bgcolor);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+  }
+}
+
+@each $status, $colors in $message-colors {
+  .system-message_#{$status} {
+    @include bg-gradient(nth($colors, 1), nth($colors, 2), nth($colors, 3));
+  }
+}
+
+.system-message {
+  width: 330px;
+  height: 302px;
+  display: inline-block;
+  padding: 35px;
+  margin: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 900;
+  color: #fff;
+  &__title {
+    margin: 20px 0;
+    font-size: 24px;
+
+  }
+  &__description {
+    font-size: 15px;
+  }
+  &__button {
+    height: 48px;
+    border-radius: 30px;
+    margin-top: 42px;
+    font-size: 22px;
+    font-weight: 900;
+    padding: 0 30px;
+    border: none;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+
+    }
+  }
+}
+
+
