@@ -1,50 +1,10 @@
+@charset "UTF-8";
 * {
   font-family: 'Nunito', sans-serif;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
-
-.system-message_warning {
-  background-color: #fd916a;
-  background-image: -webkit-gradient(linear, left top, right top, from(#fd916a), to(#fd6266));
-  background-image: linear-gradient(left, #fd916a 0%, #fd6266); }
-  .system-message_warning .system-message__button {
-    -webkit-box-shadow: 0px 2px 0px 0px #9f6b79;
-            box-shadow: 0px 2px 0px 0px #9f6b79; }
-    .system-message_warning .system-message__button span {
-      background: -webkit-gradient(linear, left top, left bottom, from(#fd916a), to(#fd6266));
-      background: linear-gradient(#fd916a, #fd6266);
-      -webkit-background-clip: text;
-      color: transparent; }
-
-.system-message_error {
-  background-color: #f5515f;
-  background-image: -webkit-gradient(linear, left top, right top, from(#f5515f), to(#d00269));
-  background-image: linear-gradient(left, #f5515f 0%, #d00269); }
-  .system-message_error .system-message__button {
-    -webkit-box-shadow: 0px 2px 0px 0px #8f3b75;
-            box-shadow: 0px 2px 0px 0px #8f3b75; }
-    .system-message_error .system-message__button span {
-      background: -webkit-gradient(linear, left top, left bottom, from(#f5515f), to(#d00269));
-      background: linear-gradient(#f5515f, #d00269);
-      -webkit-background-clip: text;
-      color: transparent; }
-
-.system-message_ok {
-  background-color: #06eecb;
-  background-image: -webkit-gradient(linear, left top, right top, from(#06eecb), to(#30cc71));
-  background-image: linear-gradient(left, #06eecb 0%, #30cc71); }
-  .system-message_ok .system-message__button {
-    -webkit-box-shadow: 0px 2px 0px 0px #3f9c93;
-            box-shadow: 0px 2px 0px 0px #3f9c93; }
-    .system-message_ok .system-message__button span {
-      background: -webkit-gradient(linear, left top, left bottom, from(#06eecb), to(#30cc71));
-      background: linear-gradient(#06eecb, #30cc71);
-      -webkit-background-clip: text;
-      color: transparent; }
+  box-sizing: border-box; }
 
 .system-message {
   width: 330px;
-  height: 302px;
   display: inline-block;
   padding: 35px;
   margin: 20px;
@@ -55,15 +15,46 @@
   .system-message__title {
     margin: 20px 0;
     font-size: 24px; }
+    .system-message__title:after {
+      padding-left: 10px; }
   .system-message__description {
     font-size: 15px; }
   .system-message__button {
     height: 48px;
     border-radius: 30px;
-    margin-top: 42px;
+    margin: 42px 0 10px;
     font-size: 22px;
     font-weight: 900;
     padding: 0 30px;
+    background: #fff;
     border: none; }
-    .system-message__button:hover {
-      background-color: rgba(255, 255, 255, 0.5); }
+
+.system-message_warning {
+  background-color: #fd6266;
+  background: linear-gradient(to bottom left, #fd6266, #fd916a); }
+  .system-message_warning .system-message__title:after {
+    content: "😬"; }
+  .system-message_warning .system-message__button {
+    box-shadow: 0px 2px 0px 0px #9f6b79; }
+    .system-message_warning .system-message__button span {
+      color: #f94f55; }
+
+.system-message_error {
+  background-color: #d00269;
+  background: linear-gradient(to bottom left, #d00269, #f5515f); }
+  .system-message_error .system-message__title:after {
+    content: "😱"; }
+  .system-message_error .system-message__button {
+    box-shadow: 0px 2px 0px 0px #8f3b75; }
+    .system-message_error .system-message__button span {
+      color: #d00269; }
+
+.system-message_ok {
+  background-color: #30cc71;
+  background: linear-gradient(to bottom left, #30cc71, #06eecb); }
+  .system-message_ok .system-message__title:after {
+    content: "☺"; }
+  .system-message_ok .system-message__button {
+    box-shadow: 0px 2px 0px 0px #3f9c93; }
+    .system-message_ok .system-message__button span {
+      color: #30cc71; }

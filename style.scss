@@ -3,9 +3,9 @@
   box-sizing: border-box;
 }
 
-$color_warning: rgb(253, 145, 106), rgb(253, 98, 102), rgb(159, 107, 121);
-$color_error: rgb(245, 81, 95), rgb(208, 2, 105), rgb(143, 59, 117);
-$color_ok: rgb(6, 238, 203), rgb(48, 204, 113), rgb(63, 156, 147);
+$color_warning: #fd6266, #fd916a, #f94f55, #9f6b79, "\1F62C";
+$color_error: #d00269, #f5515f, #d00269, #8f3b75, "\1F631";
+$color_ok: #30cc71, #06eecb, #30cc71, #3f9c93, "\263A";
 
 $message-colors: (
     warning: $color_warning,
@@ -13,28 +13,24 @@ $message-colors: (
     ok:$color_ok
 );
 
-@mixin bg-gradient($first-bgcolor, $second-bgcolor, $btn-bgcolor) {
+@mixin message($first-bgcolor, $second-bgcolor, $btn-text-color, $btn-bgcolor, $icon) {
   background-color: $first-bgcolor;
-  background-image: linear-gradient(left, $first-bgcolor 0%, $second-bgcolor);
+  background: linear-gradient(to bottom left, $first-bgcolor, $second-bgcolor);
+  .system-message__title {
+    &:after {
+      content: $icon;
+    }
+  }
   .system-message__button {
     box-shadow: 0px 2px 0px 0px $btn-bgcolor;
     span {
-      background: linear-gradient($first-bgcolor, $second-bgcolor);
-      -webkit-background-clip: text;
-      color: transparent;
+      color: $btn-text-color;
     }
-  }
-}
-
-@each $status, $colors in $message-colors {
-  .system-message_#{$status} {
-    @include bg-gradient(nth($colors, 1), nth($colors, 2), nth($colors, 3));
   }
 }
 
 .system-message {
   width: 330px;
-  height: 302px;
   display: inline-block;
   padding: 35px;
   margin: 20px;
@@ -45,7 +41,9 @@ $message-colors: (
   &__title {
     margin: 20px 0;
     font-size: 24px;
-
+    &:after {
+      padding-left: 10px;
+    }
   }
   &__description {
     font-size: 15px;
@@ -53,16 +51,18 @@ $message-colors: (
   &__button {
     height: 48px;
     border-radius: 30px;
-    margin-top: 42px;
+    margin: 42px 0 10px;
     font-size: 22px;
     font-weight: 900;
     padding: 0 30px;
+    background: #fff;
     border: none;
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.5);
-
-    }
   }
 }
 
+@each $status, $colors in $message-colors {
+  .system-message_#{$status} {
+    @include message(nth($colors, 1), nth($colors, 2), nth($colors, 3), nth($colors, 4), nth($colors, 5));
+  }
+}
 

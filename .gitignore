@@ -12,3 +12,5 @@ img.svg
 .idea/watcherTasks.xml
 
 *.map
+
+.idea/vcs.xml
